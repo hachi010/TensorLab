@@ -2,12 +2,16 @@ from flask import Flask, render_template, session,json
 from flask import request
 from flask import jsonify
 from heperfunctions import *
+from constants import *
 from flask import Response
 from psycopg2 import IntegrityError
+import logging
 
+
+# logging.basicConfig(filename='LogFolder/app_los.log' ,level = logging.DEBUG)
 
 app = Flask(__name__)
-
+logger = get_logger(__name__)
 conn = create_db_connection()
 
 
@@ -29,14 +33,7 @@ def getAllCaretakers():
     formatted_result = format_userinfo(rows,col_names)
     return formatted_result
 
-#API for get clients using GET METHOD
-# @app.route('/clients', methods=["GET"])
-# def get_clients():
-#     clients = Client.query.all()
-#     client_list = []
-#     for client in clients:
-#         client_list.append(client.name)
-#     return jsonify(client_list)
+
   
 # API for creating new_user in database using POST METHOD
 @app.route('/addNewCaretaker', methods=['POST'])
@@ -60,6 +57,7 @@ def add_new_caretaker():
 
         except Exception as e:
             message=str(e)
+            logger.error(message)
             response_dict['message'] = message
             return Response(response=json.dumps(response_dict),
             status=405,
@@ -67,8 +65,10 @@ def add_new_caretaker():
 
         if cursor.rowcount > 0:
             message = "Data was inserted successfully"
+            logger.info(message)
         else:
             message = "Could not insert data"
+            logger.error(message)
 
         response_dict['message'] = message
         return Response(response=json.dumps(response_dict),
@@ -76,6 +76,7 @@ def add_new_caretaker():
         mimetype="application/json")
     else:
         message = "Excpected API type POST"
+        logger.warning(message)
         response_dict['message'] = message
         return Response(response=json.dumps(response_dict),
         status=405,
@@ -96,7 +97,7 @@ def add_new_client():
         gender= data['gender']
         birthday= data['birthday']
         phone= data['phone']
-        address= data['address']
+        address= ngrok http 80data['address']
 
         try:
 
@@ -106,15 +107,18 @@ def add_new_client():
         
         except Exception as e:
             message=str(e)
+            logger.error(message)
             response_dict['message'] = message
-            return Response(response=json.dumps(response_dict),
+            returngrok http 80n Response(response=json.dumps(response_dict),
             status=405,
             mimetype="application/json")
 
         if cursor.rowcount > 0:
             message = "Data was inserted successfully"
+            logger.info(message)
         else:
             message = "Could not insert data"
+            logger.error(message)
 
         response_dict['message'] = message
         return Response(response=json.dumps(response_dict),
@@ -122,87 +126,15 @@ def add_new_client():
         mimetype="application/json")
     else:
         message = "Excpected API type POST"
+        logger.warning(message)
         response_dict['message'] = message
         return Response(response=json.dumps(response_dict),
         status=405,
         mimetype="application/json")
 
-# API for creating a new_user in database using POST METHOD
-# @app.route('/users', methods=["POST"])
-# def create_user():
-#     name = request.json.get('name')
-#     email = request.json.get('email')
-#     new_user = User(name=name, email=email)
-#     db.session.add(new_user)
-#     db.session.commit()
-#     return jsonify({"message": "User created"})
-
-@app.route('/bootstrap')
-def login():
-    return render_template('index.html')
-
-@app.route('/sum',methods=['GET'])
-def sum():
-    num1=int(request.args.get('num1'))
-    num2=int(request.args.get('num2'))
-    return str(num1+num2)
-@app.route('/testcase')
-def test_multiple_primary_key_edge_case():
-    # Create a new record with duplicate primary key values
-    record1 = {'id': 1, 'product_id': 1, 'name': 'Apple', 'price': 0.99}
-    record2 = {'id': 1, 'product_id': 1, 'name': 'Banana', 'price': 0.89}
-    try:
-        insert_into_table('products', record1)
-        insert_into_table('products', record2)
-        # If the second insert is successful, the test fails
-        assert False, "Insert of record with duplicate primary key should have failed"
-    except IntegrityError:
-        # If an IntegrityError is raised, the test passes
-        assert True
-
-@app.errorhandler(Exception)
-def error_handler(e):
-    app.logger.error(e)
-    return jsonify(error=str(e)),500
-# def test_multiple_primary_key_edge_case():
-#  record1 = {'id': 1, 'product_id': 1, 'name': 'Apple', 'price': 0.99}
-#     record2 = {'id': 1, 'product_id': 1, 'name': 'Banana', 'price': 0.89}
-#     try:
-#         insert_into_table('products', record1)
-#         insert_into_table('products', record2)
-#         # If the second insert is successful, the test fails
-#         assert False, "Insert of record with duplicate primary key should have failed"
-#     except IntegrityError:
-#         # If an IntegrityError is raised, the test passes
-#         assert True
-# @app.route('/login', methods=['POST', 'GET'])
-# def login():
-#     error = None
-#     if request.method == 'GET':
-#         if valid_login(request.form['username'],
-#                        request.form['password']):
-#             return log_the_user_in(request.form['username'])
-#         else:
-#             error = 'Invalid username/password'
-#     # the code below is executed if the request method
-#     # was GET or the credentials were invalid
-#     return render_template('login.html', error=error)
-
-# @app.route("/firstpage")
-# # def hello_world():
-# #     user_id=session["user_id"]
-# #     # print("return se upar")
-# #     return name
-# #     # return "<p>Hello, World,to my first page!</p>"
-
-# def get_username():
-#     username=request.args.get("username")
-#     if username:
-#         return f"Welcome!,{username}"
-#     else:
-#         return "Please provide a username in the URL, e.g. http://localhost:5000/?username=johndoe"
 
 
 if __name__ == '__main__':
+
    app.run(host='localhost',port=7000,debug = True)
 

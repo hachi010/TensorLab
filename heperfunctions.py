@@ -1,6 +1,12 @@
 from config import *
 import psycopg2
+from constants import *
 from queries import queries
+
+def get_logger(name, level='DEBUG'):
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    return logger
 
 def format_userinfo(rows,col_names):
     users_dict = {}

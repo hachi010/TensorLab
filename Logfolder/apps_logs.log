@@ -1,0 +1,46 @@
+INFO:__main__:Code started
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:7000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 616-735-131
+INFO:__main__:Data was inserted successfully
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 18:26:33] "POST /addNewCaretaker HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/sherlock/project/TensorLab/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 616-735-131
+ERROR:__main__:duplicate key value violates unique constraint "client_pk"
+DETAIL:  Key (id)=(69) already exists.
+
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 18:33:38] "[31m[1mPOST /addNewClient HTTP/1.1[0m" 405 -
+INFO:werkzeug: * Detected change in '/home/sherlock/project/TensorLab/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 616-735-131
+INFO:werkzeug: * Detected change in '/home/sherlock/project/TensorLab/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 616-735-131
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:7000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 616-735-131
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 18:55:16] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 19:00:21] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 19:01:11] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 19:01:23] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 19:03:15] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 19:04:45] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/Jan/2023 19:06:07] "GET /getAllClients HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:7000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 616-735-131
+INFO:werkzeug: * Detected change in '/home/sherlock/project/TensorLab/app.py', reloading
+INFO:werkzeug: * Restarting with stat
